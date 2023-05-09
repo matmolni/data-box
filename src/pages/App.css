@@ -1,0 +1,29 @@
+.dashboard {
+  height: 100vh;
+}
+
+.data-row {
+  height: calc(100vh - 20rem);
+  padding-bottom: 1rem;
+}
+
+.control-row {
+
+
+}
+
+.menu-bar {
+
+}
+
+.data-grid {
+
+}
+
+.timeline {
+
+}
+
+.tl-control {
+
+}
