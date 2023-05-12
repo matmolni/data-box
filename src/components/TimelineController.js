@@ -1,9 +1,16 @@
-import React, {Component} from 'react';
-import {Skeleton} from "primereact/skeleton";
+import {Button} from "primereact/button";
 
-function TimelineController() {
+function TimelineController({data, setDisplayRange}) {
+
+    //handler function for reset view button - resets the display range to the full range of the data
+    function resetView() {
+        setDisplayRange({start: data.range.start, end: data.range.end});
+    }
+
     return (
-        <Skeleton className="h-full w-auto"></Skeleton>
+        <div className="h-full w-auto">
+            <Button label="Reset View" icon={"pi pi-history"} severity={"danger"} className="m-3" onClick={resetView}></Button>
+        </div>
     );
 }
 

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Skeleton} from "primereact/skeleton";
 import {SlideMenu} from "primereact/slidemenu";
 
 function DataMenu() {
@@ -137,7 +136,9 @@ function DataMenu() {
     ];
 
     return (
-        <SlideMenu model={model} menuWidth={288} viewportHeight={500} className="w-18rem"></SlideMenu>
+        <div className="h-full w-auto">
+            <SlideMenu model={model} menuWidth={288} viewportHeight={500} className="w-18rem"></SlideMenu>
+        </div>
     );
 }
 

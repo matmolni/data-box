@@ -3,7 +3,9 @@ import {Skeleton} from "primereact/skeleton";
 
 function DataGrid() {
     return (
-        <Skeleton className="h-full w-auto"></Skeleton>
+        <div className="h-full w-auto">
+
+        </div>
     );
 }
 

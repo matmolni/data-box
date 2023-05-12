@@ -4,8 +4,9 @@ import {useRef, useState} from "react";
 function Timeline({displayData, displayRange, setDisplayRange}) {
 
     const chartRef = useRef(null);
-    const [dragStart, setDragStart] = useState(null);
-    const [dragEnd, setDragEnd] = useState(null);
+
+    let dragStart = null;
+    let dragEnd = null;
 
     //function that handles the mouse down event
     function handleMouseDown(event) {
@@ -17,7 +18,7 @@ function Timeline({displayData, displayRange, setDisplayRange}) {
             const x = event.clientX - canvasPosition.left;
             const y = event.clientY - canvasPosition.top;
 
-            setDragStart({ x, y });
+            dragStart = { x, y };
             console.log(dragStart);
         }
     }
@@ -31,7 +32,7 @@ function Timeline({displayData, displayRange, setDisplayRange}) {
             const x = event.clientX - canvasPosition.left;
             const y = event.clientY - canvasPosition.top;
 
-            setDragEnd({ x, y });
+            dragEnd = { x, y };
             console.log(dragEnd);
 
             calculateDisplayRange()
@@ -47,10 +48,11 @@ function Timeline({displayData, displayRange, setDisplayRange}) {
 
             const newRangeStart = currentRange * dragRange.start / 100;
             const newRangeEnd = currentRange * dragRange.end / 100;
+            const newRange = {start: newRangeStart, end: newRangeEnd};
 
-            setDisplayRange({start: newRangeStart, end: newRangeEnd});
+            setDisplayRange(newRange);
 
-            console.log(dragRange, displayRange);
+            console.log(dragRange, newRange);
         }
     }
 

@@ -18,7 +18,7 @@ import Timeline from "../components/Timeline";
 
 function App() {
 
-    const [data, setData] = useState(null);
+    const [data, setData] = useState({data: null, range: {start: 0, end: 100}});
     const [displayData, setDisplayData] = useState(null);
     const [displayRange, setDisplayRange] = useState({start: 0, end: 100});
 
@@ -34,7 +34,7 @@ function App() {
             </div>
             <div className="control-row flex flex-row m-3 w-auto absolute bottom-0 left-0 right-0">
                 <div className="tl-control w-18rem h-18rem mr-3">
-                    <TimelineController></TimelineController>
+                    <TimelineController data={data} setDisplayRange={setDisplayRange}></TimelineController>
                 </div>
                 <div className="timeline flex-auto">
                     <Timeline displayData={displayData} displayRange={displayRange} setDisplayRange={setDisplayRange}></Timeline>

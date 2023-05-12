@@ -1,5 +1,6 @@
 .dashboard {
   height: 100vh;
+  background-color: #11151c;
 }
 
 .data-row {
@@ -13,17 +14,21 @@
 }
 
 .menu-bar {
-
+  background-color: #212d40;
+  border-radius: 6px;
 }
 
 .data-grid {
-
+  background-color: #212d40;
+  border-radius: 6px;
 }
 
 .timeline {
-
+  background-color: #212d40;
+  border-radius: 6px;
 }
 
 .tl-control {
-
+  background-color: #212d40;
+  border-radius: 6px;
 }
