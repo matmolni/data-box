@@ -1,11 +1,7 @@
-import React, {Component} from 'react';
-import {Skeleton} from "primereact/skeleton";
-
-function DataGrid() {
+import React from 'react';
+function DataGrid({displayData}) {
     return (
-        <div className="h-full w-auto">
-
-        </div>
+        <div className="h-full w-auto"></div>
     );
 }
 

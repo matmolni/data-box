@@ -1,3 +1,4 @@
+import React from 'react';
 import TimelineChart from "./TimelineChart";
 import {useRef, useState} from "react";
 

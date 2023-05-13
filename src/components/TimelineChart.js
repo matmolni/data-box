@@ -1,3 +1,4 @@
+import React from 'react';
 import {Chart} from 'primereact/chart';
 
 function TimelineChart({displayData, handleMouseDown, handleMouseUp, chartRef}) {

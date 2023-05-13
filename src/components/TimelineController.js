@@ -1,3 +1,4 @@
+import React from 'react';
 import {Button} from "primereact/button";
 
 function TimelineController({data, setDisplayRange}) {
@@ -8,8 +9,8 @@ function TimelineController({data, setDisplayRange}) {
     }
 
     return (
-        <div className="h-full w-auto">
-            <Button label="Reset View" icon={"pi pi-history"} severity={"danger"} className="m-3" onClick={resetView}></Button>
+        <div className="h-full w-auto p-3">
+            <Button label="Reset View" icon={"pi pi-history"} severity={"danger"} onClick={resetView}></Button>
         </div>
     );
 }
