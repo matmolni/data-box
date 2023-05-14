@@ -22,7 +22,7 @@ export function parseCSV({fileURL, setData, setDisplayData, setDisplayRange}) {
         //set time range as the first and last timestamps in the data - timestamps are in the first column (ignoring header row)
         const range = {start: data[1][0], end: data[data.length - 1][0]};
 
-        //set the data state
+        //set the data state to the parsed data and the range
         setData({data: data, range: range});
 
         //set the display data state
