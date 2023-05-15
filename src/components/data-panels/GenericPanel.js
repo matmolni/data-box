@@ -1,8 +1,10 @@
 import React from 'react';
 
-function GenericPanel(props) {
+function GenericPanel(displayData) {
     return (
-        <div></div>
+        <div>
+            <p>Generic Panel</p>
+        </div>
     );
 }
 

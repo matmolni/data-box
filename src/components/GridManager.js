@@ -5,53 +5,31 @@ import 'gridstack/dist/gridstack-extra.min.css'
 import { GridStack } from 'gridstack';
 
 import './DataGrid.css'
+import GenericPanel from "./data-panels/GenericPanel";
 
-function GridManager({ items }) {
-    const refs = useRef({})
-    const gridRef = useRef()
+function GridManager({ displayData, initialLayout }) {
+    const gridRef = useRef(null)
 
-    if (Object.keys(refs.current).length !== items.length) {
-        items.forEach(({ id }) => {
-            refs.current[id] = refs.current[id] || createRef()
-        })
-    }
-
+    //hook that renders the grid when the component mounts and when the initialLayout prop changes
     useEffect(() => {
-        gridRef.current = gridRef.current ||
-            GridStack.init(
-                {
-                    float: true,
-                    column: 6,
-                    //row: 3,
-                    alwaysShowResizeHandle: false
-                },
-                '.controlled')
-        const grid = gridRef.current
-        grid.batchUpdate()
-        grid.removeAll(false)
-        items.forEach(({ id }) => grid.makeWidget(refs.current[id].current))
-        grid.batchUpdate(false)
-    }, [items])
+        if (!gridRef.current) {
+            gridRef.current = GridStack.init({
+                float: true,
+                alwaysShowResizeHandle: false,
+                minRow: 1,
+                column: 6
+            }, '.datagrid');
+        }
 
+        const grid = gridRef.current;
 
-    function GridItem({ id }) {
-        return (
-            <div className="grid-item">{id}</div>
-        )
-    }
+        //loads the layout specified in the initialLayout prop, removes all previous items
+        grid.load(initialLayout, true);
+
+    }, [initialLayout]);
 
     return (
-        <div className={`grid-stack controlled`}>
-            {items.map((item, i) => {
-                return (
-                    <div ref={refs.current[item.id]} key={item.id} className={'grid-stack-item'}>
-                        <div className="grid-stack-item-content">
-                            <GridItem {...item} />
-                        </div>
-                    </div>
-                )
-            })}
-        </div>
+        <div className={`grid-stack datagrid`}></div>
     )
 }
 

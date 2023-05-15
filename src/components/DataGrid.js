@@ -7,7 +7,7 @@ function DataGrid({displayData, dataView}) {
         <div className="h-full w-auto p-3">
             <h1 className="text-left text-2xl font-bold text-color mt-0">Data Grid</h1>
             <div className="grid-container w-auto overflow-y-auto">
-                <GridManager items={dataView}></GridManager>
+                <GridManager displayData={displayData} initialLayout={dataView}></GridManager>
             </div>
         </div>
     );

@@ -15,6 +15,8 @@ import DataMenu from "../components/DataMenu";
 import DataGrid from "../components/DataGrid";
 import TimelineController from "../components/TimelineController";
 import Timeline from "../components/Timeline";
+import fetchData from "../utils/fetchDataFiles";
+import generateDataViews from "../utils/generateDataViews";
 
 function App() {
 
@@ -32,31 +34,17 @@ function App() {
     const [displayRange, setDisplayRange] = useState({start: 0, end: 100});
 
     //data view option
-    const [dataView, setDataView] = useState([{ id: 'item-1' }, { id: 'item-2' }]);
+    const [dataViews, setDataViews] = useState([]);
+    const [selectedView, setSelectedView] = useState([{id: 'item-1', x: 0, y: 0, w: 2, h: 1}, {id: 'item-2', x: 2, y: 0, w: 2, h: 1}]);
 
-    //parse remote host for available data files when the app first loads
+    //setup tasks to run on page load
     useEffect(() => {
+        //fetch data files from server
         console.log("fetching data files...");
-        async function fetchData() {
-            const response = await fetch("http://localhost:8080/files");
-            const data = await response.json();
+        fetchData({setAvailableFiles: setAvailableFiles});
 
-            function createJSON(files, constant) {
-                let jsonArray = files.map(file => {
-                    let fileName = file.split('.')[0];
-                    let fileURL = constant + file;
-                    return { fileName, fileURL };
-                });
-                return jsonArray;
-            }
-
-            const files = createJSON(data, "http://localhost:8080/resources/");
-
-            setAvailableFiles(files);
-            console.log(files)
-        }
-
-        fetchData();
+        //generate data view options and set default
+        generateDataViews({setDataViews: setDataViews, setSelectedView: setSelectedView})
     }, []);
 
     //the layout for the dashboard
@@ -77,7 +65,7 @@ function App() {
                 <div className="data-grid flex-auto">
                     <DataGrid
                         displayData={displayData}
-                        dataView={dataView}
+                        dataView={selectedView}
                     ></DataGrid>
                 </div>
             </div>
