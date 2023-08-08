@@ -70,7 +70,7 @@ function App() {
                 </div>
             </div>
             <div className="control-row flex flex-row m-3 w-auto absolute bottom-0 left-0 right-0">
-                <div className="tl-control w-18rem h-18rem mr-3">
+                <div className="tl-control w-18rem h-18rem mr-3 flex-shrink-0">
                     <TimelineController
                         data={data}
                         setDisplayRange={setDisplayRange}
