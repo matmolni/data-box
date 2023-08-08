@@ -5,16 +5,16 @@ function TimelineChart({displayData, handleMouseDown, handleMouseUp, chartRef}) 
 
     //development dummy data
     const data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: ['00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:00'],
         datasets: [
             {
-                label: 'My First dataset',
-                backgroundColor: 'rgba(255,99,132,0.2)',
+                label: 'Lap Count',
+                backgroundColor: 'rgba(255,99,132,1)',
                 borderColor: 'rgba(255,99,132,1)',
                 borderWidth: 1,
-                hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-                hoverBorderColor: 'rgba(255,99,132,1)',
-                data: [65, 59, 80, 81, 56, 55, 40],
+                hoverBackgroundColor: 'rgba(255,99,132,1)',
+                hoverBorderColor: 'rgba(255,99,132,0.4)',
+                data: [1, 1, 2, 2, 2, 3, 3],
             },
         ],
     };
