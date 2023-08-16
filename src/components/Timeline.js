@@ -2,7 +2,7 @@ import React from 'react';
 import TimelineChart from "./TimelineChart";
 import {useRef, useState} from "react";
 
-function Timeline({displayData, displayRange, setDisplayRange}) {
+function Timeline({selectedDataset, displayRange, setDisplayRange}) {
 
     const chartRef = useRef(null);
 
@@ -80,7 +80,13 @@ function Timeline({displayData, displayRange, setDisplayRange}) {
     }
 
     return (
-        <TimelineChart chartRef={chartRef} displayData={displayData} handleMouseDown={handleMouseDown} handleMouseUp={handleMouseUp}></TimelineChart>
+        <TimelineChart
+            chartRef={chartRef}
+            handleMouseDown={handleMouseDown}
+            handleMouseUp={handleMouseUp}
+            selectedDataset={selectedDataset}
+            displayRange={displayRange}
+        ></TimelineChart>
     );
 }
 

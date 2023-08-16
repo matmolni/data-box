@@ -15,34 +15,27 @@ import DataMenu from "../components/DataMenu";
 import DataGrid from "../components/DataGrid";
 import TimelineController from "../components/TimelineController";
 import Timeline from "../components/Timeline";
-import fetchData from "../utils/fetchDataFiles";
+import fetchAvailableData from "../utils/fetchAvailableData";
 import generateDataViews from "../utils/generateDataViews";
 
 function App() {
 
-    //available data files on server
-    const [availableFiles, setAvailableFiles] = useState({});
-
-    //selected data file (from server)
-    const [selectedFile, setSelectedFile] = useState({url: null});
+    //selected dataset to display
+    const [selectedDataset, setSelectedDataset] = useState(null); //KEEP
 
     //processed data file
-    const [data, setData] = useState({data: null, range: {start: 0, end: 100}});
+    const [data, setData] = useState({data: null, range: {start: 0, end: 100}});//REMOVE
 
-    //section of data to display
+    //data to display
     const [displayData, setDisplayData] = useState(null);
-    const [displayRange, setDisplayRange] = useState({start: 0, end: 100});
+    const [displayRange, setDisplayRange] = useState({start: 0, end: 0}); //KEEP
 
     //data view option
-    const [dataViews, setDataViews] = useState([]);
-    const [selectedView, setSelectedView] = useState([{id: 'item-1', x: 0, y: 0, w: 2, h: 1}, {id: 'item-2', x: 2, y: 0, w: 2, h: 1}]);
+    const [dataViews, setDataViews] = useState([]); //REMOVE
+    const [selectedView, setSelectedView] = useState([{id: 'item-1', x: 0, y: 0, w: 2, h: 1}, {id: 'item-2', x: 2, y: 0, w: 2, h: 1}]); //REMOVE
 
     //setup tasks to run on page load
     useEffect(() => {
-        //fetch data files from server
-        console.log("fetching data files...");
-        fetchData({setAvailableFiles: setAvailableFiles});
-
         //generate data view options and set default
         generateDataViews({setDataViews: setDataViews, setSelectedView: setSelectedView})
     }, []);
@@ -53,13 +46,8 @@ function App() {
             <div className="data-row flex flex-row w-auto">
                 <div className="menu-bar w-18rem mr-3">
                     <DataMenu
-                        availableFiles={availableFiles}
-                        selectedFile={selectedFile}
-                        setSelectedFile={setSelectedFile}
-                        data={data}
-                        setData={setData}
-                        setDisplayData={setDisplayData}
-                        setDisplayRange={setDisplayRange}
+                        selectedDataset={selectedDataset}
+                        setSelectedDataset={setSelectedDataset}
                     ></DataMenu>
                 </div>
                 <div className="data-grid flex-auto">
@@ -78,7 +66,7 @@ function App() {
                 </div>
                 <div className="timeline flex-auto">
                     <Timeline
-                        displayData={displayData}
+                        selectedDataset={selectedDataset}
                         displayRange={displayRange}
                         setDisplayRange={setDisplayRange}
                     ></Timeline>
