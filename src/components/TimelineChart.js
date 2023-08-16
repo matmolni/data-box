@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Chart} from 'primereact/chart';
 import fetchDatalog from "../utils/fetchDatalog";
+import 'chartjs-adapter-date-fns';
 
 function TimelineChart({chartRef, handleMouseDown, handleMouseUp, selectedDataset, displayRange}) {
 
@@ -44,7 +45,15 @@ function TimelineChart({chartRef, handleMouseDown, handleMouseUp, selectedDatase
         scales: {
             x: {
                 display: true,
-                type : 'linear',
+                type : 'time',
+                time: {
+                    displayFormats: {
+                        millisecond: 'mm:ss.SSS',
+                    }
+                },
+                ticks: {
+                    maxRotation: 90,
+                }
             },
             y: {
                 display: false,
