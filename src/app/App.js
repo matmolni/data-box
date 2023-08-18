@@ -12,10 +12,10 @@ import "primeflex/primeflex.css";
 
 //dashboard components
 import DataMenu from "../components/DataMenu";
-import DataGrid from "../components/DataGrid";
 import TimelineController from "../components/TimelineController";
 import Timeline from "../components/Timeline";
 import {AppProvider} from "./AppContexts";
+import GridManager from "../components/GridManager";
 
 function App() {
 
@@ -28,7 +28,7 @@ function App() {
                         <DataMenu></DataMenu>
                     </div>
                     <div className="data-grid flex-auto">
-                        <DataGrid></DataGrid>
+                        <GridManager></GridManager>
                     </div>
                 </div>
                 <div className="control-row flex flex-row m-3 w-auto absolute bottom-0 left-0 right-0">

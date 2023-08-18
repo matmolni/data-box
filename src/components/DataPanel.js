@@ -30,7 +30,7 @@ function DataPanel({chartType}) {
 
 
     return (
-        <div className="flex-grow-1 m-1 p-3 border-round-lg bg-bluegray-800">
+        <div className="h-full p-3 border-round-lg bg-bluegray-800">
             <div className="text-lg text-white font-bold">{panelName}</div>
             <ChartComponent></ChartComponent>
         </div>
