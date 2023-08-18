@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Button} from "primereact/button";
+import {DataContext, DisplayContext} from "../app/AppContexts";
 
-function TimelineController({data, setDisplayRange}) {
+function TimelineController() {
+
+    //display range state from context
+    const {selectedDataset, setSelectedDataset, displayRange, setDisplayRange} = useContext(DataContext);
 
     //handler function for reset view button - resets the display range to the full range of the data
     function resetView() {
-        setDisplayRange({start: data.range.start, end: data.range.end});
+        setDisplayRange({start: 0, end: setSelectedDataset.duration});
     }
 
     return (

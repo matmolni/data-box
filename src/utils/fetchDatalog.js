@@ -2,10 +2,8 @@ async function fetchDatalog(selectedDataset, dataSource) {
     try {
 
         if (selectedDataset === null) {
-            throw new Error('No dataset selected');
+            return null;
         }
-
-        console.log("fetching data for: " + selectedDataset.toString());
 
         //fetch data from server
         const response = await fetch('http://localhost:8080/data/datalog?datasetId=' + selectedDataset.identifier + '&dataSource=' + dataSource);

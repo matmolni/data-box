@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import TimelineChart from "./TimelineChart";
 import {useRef, useState} from "react";
+import {DataContext, DisplayContext} from "../app/AppContexts";
 
-function Timeline({selectedDataset, displayRange, setDisplayRange}) {
+function Timeline() {
+
+    //selected dataset, display range and setDisplayRange function from context
+    const {selectedDataset, setSelectedDataset, displayRange, setDisplayRange} = useContext(DataContext);
 
     const chartRef = useRef(null);
 
@@ -84,8 +88,6 @@ function Timeline({selectedDataset, displayRange, setDisplayRange}) {
             chartRef={chartRef}
             handleMouseDown={handleMouseDown}
             handleMouseUp={handleMouseUp}
-            selectedDataset={selectedDataset}
-            displayRange={displayRange}
         ></TimelineChart>
     );
 }

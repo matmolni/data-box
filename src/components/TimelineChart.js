@@ -1,9 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Chart} from 'primereact/chart';
 import fetchDatalog from "../utils/fetchDatalog";
 import 'chartjs-adapter-date-fns';
+import {DataContext} from "../app/AppContexts";
 
-function TimelineChart({chartRef, handleMouseDown, handleMouseUp, selectedDataset, displayRange}) {
+function TimelineChart({chartRef, handleMouseDown, handleMouseUp}) {
+
+    //selected dataset and display range from context
+    const {selectedDataset, displayRange} = useContext(DataContext);
 
     const [data, setData] = useState(null);
 

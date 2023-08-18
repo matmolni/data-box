@@ -1,12 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Divider} from "primereact/divider";
 import {Dropdown} from "primereact/dropdown";
 import {FileUpload} from "primereact/fileupload";
 import fetchAvailableData from "../utils/fetchAvailableData";
+import {DataContext, DisplayContext} from "../app/AppContexts";
+import dataViews from "../assets/dataViews";
 
-function DataMenu({selectedDataset, setSelectedDataset }) {
+function DataMenu() {
 
-    //TODO available files should be queried in this component on load or potentially on user input (refresh button)
+    //selected dataset and setDisplayRange from context
+    const {selectedDataset, setSelectedDataset, displayRange, setDisplayRange} = useContext(DataContext)
+    const {selectedView, setSelectedView} = useContext(DisplayContext);
 
     //available datasets on server
     const [availableDatasets, setAvailableDatasets] = useState([]);
@@ -15,7 +19,18 @@ function DataMenu({selectedDataset, setSelectedDataset }) {
     useEffect(() => {
         console.log("fetching data files...");
         fetchAvailableData({setAvailableData: setAvailableDatasets});
+
+        setSelectedView(dataViews[0]);
     } , []);
+
+    function handleDatasetChange(e) {
+
+        //set selected dataset to the one selected by the user
+        setSelectedDataset(e.value);
+
+        //set display range to the whole dataset
+        setDisplayRange({start: 0, end: e.value.duration});
+    }
 
     return (
         <div className="h-full w-auto p-3 overflow-y-auto">
@@ -25,13 +40,25 @@ function DataMenu({selectedDataset, setSelectedDataset }) {
             <Dropdown
                 placeholder={"Select a data file..."}
                 value={selectedDataset}
-                onChange={(e) => setSelectedDataset(e.value)}
+                onChange={handleDatasetChange}
                 onClick={(e) => fetchAvailableData({setAvailableData: setAvailableDatasets})}
                 options={availableDatasets}
                 optionLabel={"sessionName"}
                 className={"w-full"}
             ></Dropdown>
             <p className="text-color-secondary">Select data file to load and display. All available data files are listed in the dropdown.</p>
+
+            <Divider align={"center"}></Divider>
+
+            <h2 className="text-left text-xl font-bold text-color-secondary mt-0">Available data views:</h2>
+            <Dropdown
+                placeholder={"Select a data view..."}
+                value={selectedView}
+                onChange={(e) => setSelectedView(e.value)}
+                options={dataViews}
+                optionLabel={"viewName"}
+                className={"w-full"}
+            ></Dropdown>
 
             <Divider align={"center"}></Divider>
 
