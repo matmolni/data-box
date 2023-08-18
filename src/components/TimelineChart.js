@@ -33,6 +33,7 @@ function TimelineChart({chartRef, handleMouseDown, handleMouseUp}) {
                         borderWidth: 1,
                         hoverBackgroundColor: 'rgba(255,99,132,1)',
                         hoverBorderColor: 'rgba(255,99,132,0.4)',
+                        stepped: true,
                         data: getDataLogData(datalog),
                     },
                 ],
@@ -56,7 +57,7 @@ function TimelineChart({chartRef, handleMouseDown, handleMouseUp}) {
                     }
                 },
                 ticks: {
-                    maxRotation: 90,
+                    maxRotation: 0,
                 }
             },
             y: {
@@ -70,9 +71,7 @@ function TimelineChart({chartRef, handleMouseDown, handleMouseUp}) {
     };
 
     return (
-        <div onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
-            <Chart ref={chartRef} type="line" data={data} options={options}/>
-        </div>
+        <Chart className="flex-auto" ref={chartRef} type="line" data={data} options={options} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}/>
     );
 }
 

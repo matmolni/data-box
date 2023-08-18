@@ -84,11 +84,13 @@ function Timeline() {
     }
 
     return (
-        <TimelineChart
-            chartRef={chartRef}
-            handleMouseDown={handleMouseDown}
-            handleMouseUp={handleMouseUp}
-        ></TimelineChart>
+        <div className="flex h-full p-3 align-items-stretch">
+                <TimelineChart
+                    chartRef={chartRef}
+                    handleMouseDown={handleMouseDown}
+                    handleMouseUp={handleMouseUp}
+                ></TimelineChart>
+        </div>
     );
 }
 
