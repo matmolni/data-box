@@ -5,11 +5,11 @@ import {DataContext, DisplayContext} from "../app/AppContexts";
 function TimelineController() {
 
     //display range state from context
-    const {selectedDataset, setSelectedDataset, displayRange, setDisplayRange} = useContext(DataContext);
+    const {selectedDataset, setDisplayRange} = useContext(DataContext);
 
     //handler function for reset view button - resets the display range to the full range of the data
     function resetView() {
-        setDisplayRange({start: 0, end: setSelectedDataset.duration});
+        setDisplayRange({start: 0, end: selectedDataset.duration});
     }
 
     return (

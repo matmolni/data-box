@@ -1,10 +1,9 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {Chart} from 'primereact/chart';
-import fetchDatalog from "../utils/fetchDatalog";
-import 'chartjs-adapter-date-fns';
-import {DataContext} from "../app/AppContexts";
+import React, {useContext, useEffect, useRef, useState} from "react";
+import {DataContext, DisplayContext} from "../../app/AppContexts";
+import fetchDatalog from "../../utils/fetchDatalog";
+import {Chart} from "primereact/chart";
 
-function TimelineChart({chartRef, handleMouseDown, handleMouseUp}) {
+function RangePanel( {dataSource, dataset} ) {
 
     //selected dataset and display range from context
     const {selectedDataset, displayRange} = useContext(DataContext);
@@ -23,19 +22,11 @@ function TimelineChart({chartRef, handleMouseDown, handleMouseUp}) {
 
     //fetch data from server when selectedDataset changes and update chart data
     useEffect(() => {
-        fetchDatalog(selectedDataset, "lap").then((datalog) => {
+        fetchDatalog(selectedDataset, dataSource).then((datalog) => {
+            dataset.data = getDataLogData(datalog);
             const newData = {
                 datasets: [
-                    {
-                        label: 'Lap Count',
-                        backgroundColor: 'rgba(255,99,132,1)',
-                        borderColor: 'rgba(255,99,132,1)',
-                        borderWidth: 1,
-                        hoverBackgroundColor: 'rgba(255,99,132,1)',
-                        hoverBorderColor: 'rgba(255,99,132,0.4)',
-                        stepped: true,
-                        data: getDataLogData(datalog),
-                    },
+                    dataset
                 ],
             };
             setData(newData);
@@ -85,8 +76,8 @@ function TimelineChart({chartRef, handleMouseDown, handleMouseUp}) {
     };
 
     return (
-        <Chart className="flex-auto" ref={chartRef} type="line" data={data} options={options} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}/>
+        <Chart type="line" height={150} data={data} options={options}/>
     );
 }
 
-export default TimelineChart;
+export default RangePanel;

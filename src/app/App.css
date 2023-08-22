@@ -4,7 +4,7 @@
 }
 
 .data-row {
-  height: calc(100vh - 20rem);
+  height: calc(100vh - 14rem);
   padding-bottom: 1rem;
 }
 
@@ -30,4 +30,8 @@
 .tl-control {
   background-color: #212d40;
   border-radius: 6px;
+}
+
+.data-panel {
+  background-color: #27354d;
 }

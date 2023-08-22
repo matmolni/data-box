@@ -30,7 +30,7 @@ function GridManager() {
     const renderGridItems = () => {
         return gridLayout.map(item => (
             <div key={item.id} data-grid={{x: item.x, y: item.y, w: item.w, h: item.h}}>
-                <DataPanel chartType={item.chartType}></DataPanel>
+                <DataPanel chartType={item.chartType} ></DataPanel>
             </div>
         ));
     };
