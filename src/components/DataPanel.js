@@ -1,7 +1,6 @@
 import React from 'react';
-import GPSSpeedPanel from "./data-panels/GPSSpeedPanel";
-import LapPanel from "./data-panels/LapPanel";
 import RangePanel from "./data-panels/RangePanel";
+import ValuePanel from "./data-panels/ValuePanel";
 
 function DataPanel({chartType}) {
 
@@ -9,6 +8,7 @@ function DataPanel({chartType}) {
     let panelName = null;
     let datasource = null;
     let dataset = null;
+    let options = null;
 
     switch (chartType) {
         case "lap":
@@ -355,6 +355,22 @@ function DataPanel({chartType}) {
                 data: null,
             }
             ChartComponent = () => <RangePanel dataSource={datasource} dataset={dataset}></RangePanel>;
+            break;
+        case "gpsSpeed-moment":
+            panelName = "GPS Speed";
+            datasource = "gps_speed";
+            options = {
+                colour: 'rgb(51,170,255)',
+            }
+            ChartComponent = () => <ValuePanel dataSource={datasource} options={options}></ValuePanel>;
+            break;
+        case "brake-moment":
+            panelName = "Brake Pressure Sensor";
+            datasource = "brake_pressure";
+            options = {
+                colour: 'rgb(255,88,51)',
+            }
+            ChartComponent = () => <ValuePanel dataSource={datasource} options={options}></ValuePanel>;
             break;
         default:
             ChartComponent = () => <div>Default Chart</div>;

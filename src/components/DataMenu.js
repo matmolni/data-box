@@ -32,6 +32,12 @@ function DataMenu() {
         setDisplayRange({start: 0, end: e.value.duration});
     }
 
+    function handleViewChange(e) {
+
+        //set selected view to the one selected by the user
+        setSelectedView(e.value);
+    }
+
     return (
         <div className="h-full w-auto p-3 overflow-y-auto">
 
@@ -54,7 +60,7 @@ function DataMenu() {
             <Dropdown
                 placeholder={"Select a data view..."}
                 value={selectedView}
-                onChange={(e) => setSelectedView(e.value)}
+                onChange={handleViewChange}
                 options={dataViews}
                 optionLabel={"viewName"}
                 className={"w-full"}

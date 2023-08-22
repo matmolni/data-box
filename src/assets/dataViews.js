@@ -120,14 +120,24 @@ const dataViewLayouts = [
             ]
     },
     {
-        viewName: 'Test',
+        viewName: 'Moments',
         viewLayout:
             [
                 {
-                    id: 'item-1',
+                    id: 'item-11', x: 0, y: 0, w: 1, h: 1,
+                    chartType: "gpsSpeed-moment"
                 },
                 {
-                    id: 'item-2'
+                    id: 'item-12', x: 1, y: 0, w: 5, h: 1,
+                    chartType: "gpsSpeed"
+                },
+                {
+                    id: 'item-21', x: 0, y: 1, w: 1, h: 1,
+                    chartType: "brake-moment"
+                },
+                {
+                    id: 'item-22', x: 1, y: 1, w: 5, h: 1,
+                    chartType: "brake"
                 }
             ]
     }
