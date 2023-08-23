@@ -28,11 +28,9 @@ function TimelineChart({chartRef, handleMouseDown, handleMouseUp}) {
                 datasets: [
                     {
                         label: 'Lap Count',
-                        backgroundColor: 'rgba(255,99,132,1)',
-                        borderColor: 'rgba(255,99,132,1)',
+                        backgroundColor: 'rgb(255,26,75)',
+                        borderColor: 'rgb(255,51,95)',
                         borderWidth: 1,
-                        hoverBackgroundColor: 'rgba(255,99,132,1)',
-                        hoverBorderColor: 'rgba(255,99,132,0.4)',
                         stepped: true,
                         data: getDataLogData(datalog),
                     },

@@ -37,7 +37,7 @@ function GridManager() {
 
     return (
         <div className="flex flex-column h-full p-2">
-            <h1 className="flex-none text-left text-2xl font-bold text-color m-0 p-2">Data Menu</h1>
+            <h1 className="flex-none text-left text-2xl font-bold text-color m-0 p-2">Data Grid</h1>
             <div className="flex-1 overflow-y-auto ">
                 <div className="h-full, w-full">
                 <ResponsiveGridLayout className="layout" cols={6} rowHeight={200} width={300}>

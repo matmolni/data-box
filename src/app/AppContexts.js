@@ -11,7 +11,11 @@ function AppProvider({children}) {
     const [displayRange, setDisplayRange] = React.useState({start: 0, end: 0});
 
     //states for display context
-    const [selectedView, setSelectedView] = React.useState(null);
+    const [selectedView, setSelectedView] = React.useState({
+        name: "Empty",
+        viewLayout: []
+        }
+    );
 
     return (
         <DataContext.Provider value={{

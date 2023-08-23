@@ -44,7 +44,7 @@ function DataMenu() {
             <h1 className="text-left text-2xl font-bold text-color mt-0">Data Menu</h1>
             <h2 className="text-left text-xl font-bold text-color-secondary mt-0">Configure display below:</h2>
             <Dropdown
-                placeholder={"Select a data file..."}
+                placeholder={"Select a data set..."}
                 value={selectedDataset}
                 onChange={handleDatasetChange}
                 onClick={(e) => fetchAvailableData({setAvailableData: setAvailableDatasets})}
@@ -52,7 +52,7 @@ function DataMenu() {
                 optionLabel={"sessionName"}
                 className={"w-full"}
             ></Dropdown>
-            <p className="text-color-secondary">Select data file to load and display. All available data files are listed in the dropdown.</p>
+            <p className="text-color-secondary">Select data set to load and display. All available data sets are listed in the dropdown.</p>
 
             <Divider align={"center"}></Divider>
 
@@ -65,6 +65,7 @@ function DataMenu() {
                 optionLabel={"viewName"}
                 className={"w-full"}
             ></Dropdown>
+            <p className="text-color-secondary">Select a pre-defined data view. Each view contains visualisations grouped by use case.</p>
 
             <Divider align={"center"}></Divider>
 
